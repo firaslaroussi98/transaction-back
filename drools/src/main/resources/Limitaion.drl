@@ -1,0 +1,19 @@
+import com.bns.app.drools.domain.LimitationRequest;
+
+
+rule "FD Interest Rate for Ci"
+when
+fdObject : LimitationRequest( (montantEmmetteur / soldeBancaire) <= 2 );
+then
+fdObject.setAccepted(true);
+fdObject.setMessage("la transaction est accepté");
+end
+
+
+rule "FD Interest Rate for Citi Bank "
+when
+fdObject : LimitationRequest( (montantEmmetteur/soldeBancaire) > 2 );
+then
+fdObject.setAccepted(false);
+fdObject.setMessage("la transaction n'est pas accepté");
+end

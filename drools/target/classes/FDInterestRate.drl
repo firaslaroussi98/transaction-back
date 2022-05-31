@@ -1,0 +1,25 @@
+import  com.bns.app.drools.domain.FDRequest;
+
+ 
+
+rule "FD Interest Rate for Citi Bank duration more than 1 year and below 2 years"
+when
+fdObject : FDRequest( montant >= 0 && montant <= 10000000 );
+then
+fdObject.setCommition(10);
+// FDRequest.Commition();
+end
+
+rule "FD Interest Rate for Citi Bank for duration more than or equal to 2 years"
+when
+fdObject : FDRequest( montant > 10000000 );
+then
+fdObject.setCommition(15);
+// FDRequest.Commition();
+end
+
+ 
+ 
+ 
+ 
+
