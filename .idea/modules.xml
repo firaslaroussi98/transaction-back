@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/emetteur/emetteur.iml" filepath="$PROJECT_DIR$/emetteur/emetteur.iml" />
       <module fileurl="file://$PROJECT_DIR$/transaction.iml" filepath="$PROJECT_DIR$/transaction.iml" />
       <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/userauth/userauth.iml" filepath="$PROJECT_DIR$/userauth/userauth.iml" />
     </modules>
   </component>
 </project>

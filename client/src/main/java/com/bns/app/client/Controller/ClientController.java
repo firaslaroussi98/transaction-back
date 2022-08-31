@@ -16,6 +16,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/client")
 public class ClientController {
     @Autowired
@@ -109,6 +110,26 @@ public class ClientController {
     public void removeClientByRNE(@PathVariable("client-RNE") String ClientRNE)
     {
         clientrepo.deleteClientByRNE(ClientRNE);
+    }
+
+    @DeleteMapping("/deleteClientById/{idDto}")
+    public boolean deleteEmployeeByID(@PathVariable long idDto) {
+
+        return clientService.deleteClientByID(idDto);
+    }
+
+
+    @PutMapping("/updateClient")
+    public ResponseEntity<ClientDto>  updateClient(@RequestBody ClientDto clientdto )
+    {
+        try {
+            log.info("client modifié avec succés");
+            return new ResponseEntity<>(clientService.updateClient(clientdto), HttpStatus.OK);
+        }
+        catch (Exception e) {
+            log.error("client non modifier");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage(), e);
+        }
     }
 
 }

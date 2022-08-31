@@ -7,11 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="drools" />
         <module name="user" />
+        <module name="userauth" />
+        <module name="emetteur" />
+        <module name="drools" />
         <module name="client" />
         <module name="attachement" />
-        <module name="emetteur" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,6 +22,7 @@
       <module name="emetteur" target="11" />
       <module name="transaction" target="11" />
       <module name="user" target="11" />
+      <module name="userauth" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

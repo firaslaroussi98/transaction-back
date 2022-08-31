@@ -87,6 +87,37 @@ public class ClientServiceImpl implements IClientService{
     }
 
     @Override
+    public ClientDto updateClient(ClientDto clientdto) {
+
+        Client existingCLT = clientrepo.findById(clientdto.getIdDto()).orElse(null);
+        System.out.println(clientdto);
+        if(existingCLT == null) {
+            System.out.println("client not found");
+            Client client = clientrepo.save(Client.builder()
+                    .cin(clientdto.getCinDto())
+                    .matriculeFs(clientdto.getMatriculeFsDto())
+                    .nom(clientdto.getNomDto())
+                    .passeport(clientdto.getPasseportDto())
+                    .prenom(clientdto.getPrenomDto())
+                    .rne(clientdto.getRneDto())
+                    .build());
+
+            log.info("la modification est realisé avec succés, fin methode mettreAjourClient");
+            return clientmapper.toDto(client);
+        }else  {
+            existingCLT.setCin(clientdto.getCinDto());
+            existingCLT.setNom(clientdto.getNomDto());
+            existingCLT.setPrenom(clientdto.getPrenomDto());
+            existingCLT.setPasseport(clientdto.getPasseportDto());
+            existingCLT.setRne(clientdto.getRneDto());
+            existingCLT.setMatriculeFs(clientdto.getMatriculeFsDto());
+            clientrepo.save(existingCLT);
+        }
+        return clientdto;
+    }
+
+
+    @Override
     public String deleteClientByCIN(int ClientCIN) {
         String msg="";
         try {
@@ -120,6 +151,20 @@ public class ClientServiceImpl implements IClientService{
 
         return msg;
     }
+
+    @Override
+    public boolean deleteClientByID(long idDto) {
+
+        Client existingCLT = clientrepo.getById(idDto);
+
+        if(existingCLT != null) {
+            clientrepo.deleteById(idDto);
+            return true;
+        }
+        return false;
+    }
+
+
 
     @Override
     public void checkAlreadyUsedCin(ClientDto clientdto)  {

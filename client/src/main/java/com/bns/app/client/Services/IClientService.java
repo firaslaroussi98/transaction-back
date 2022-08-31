@@ -11,7 +11,9 @@ public interface IClientService {
     public Client getClientByPasseport(String ClientPasseport);
     public ClientDto ajouterClient(ClientDto clientdto);
     public ClientDto mettreAjourClient(ClientDto clientdto);
+    public ClientDto updateClient(ClientDto clientdto);
     public String deleteClientByCIN(int ClientCIN);
     public String deleteClientByPasseport(String ClientPasseport);
+    public boolean deleteClientByID(long idDto);
     public void checkAlreadyUsedCin(ClientDto clientdto);
 }
